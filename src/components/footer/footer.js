@@ -10,7 +10,7 @@ export default function Footer() {
                         We are passionate about creating solutions that bring value to your business. Contact us to turn your ideas into reality.
                     </p>
                     <a 
-                        href="/adc_cv.pdf" 
+                        href={process.env.PUBLIC_URL + '/adc_cv.pdf'}
                         download
                         className="text-orange-400 hover:text-orange-500 mt-4 inline-block flex gap-2 items-center"
                     >

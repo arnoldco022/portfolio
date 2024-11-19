@@ -46,7 +46,7 @@ const Header = () => {
             >
                 <img
                     className="w-full h-auto object-cover"
-                    src="/heroimg.png"
+                    src={process.env.PUBLIC_URL + '/heroimg.png'}
                     alt="Cozy coffee shop"
                 />
             </div>

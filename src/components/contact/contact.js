@@ -1,9 +1,19 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import emailjs from "emailjs-com";
 
 export default function ContactSection() {
     const [formData, setFormData] = useState({ name: "", email: "", message: "" });
     const [modal, setModal] = useState({ isVisible: false, message: "", success: true });
+
+    useEffect(() => {
+        const hash = window.location.hash;
+        if (hash) {
+            const element = document.getElementById(hash.substring(1));
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    }, []);
 
     const handleInputChange = (e) => {
         const { id, value } = e.target;
@@ -54,7 +64,6 @@ export default function ContactSection() {
                     Have a project in mind? Let’s connect and create something amazing together!
                 </p>
             </div>
-
             <form
                 className="max-w-2xl mx-auto bg-white shadow-2xl p-8 rounded-lg space-y-6 relative overflow-hidden"
                 onSubmit={handleSubmit}
@@ -109,7 +118,6 @@ export default function ContactSection() {
                     Send Message
                 </button>
             </form>
-
             {modal.isVisible && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
                     <div className="bg-white rounded-lg p-6 max-w-md w-full text-center shadow-lg relative">

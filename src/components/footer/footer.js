@@ -34,7 +34,7 @@ export default function Footer() {
                             </a>
                         </li>
                         <li>
-                            <div className="flex mt-6 space-x-8 text-lg">
+                            <div className="flex mt-6 space-x-8 text-lg justify-center md:justify-start">
                                 <a href="https://linkedin.com/in/arnold-co-356a8223a" target="_blank" rel="noreferrer"  className="hover:text-burnt-orange transition-all">
                                     <FaLinkedin size={24} />
                                 </a>

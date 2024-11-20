@@ -33,14 +33,18 @@ const AboutMe = () => {
     const sectionRef = useRef(null);
 
     useEffect(() => {
+        const mobileView = window.matchMedia("(max-width: 768px)");
+        const threshold = mobileView.matches ? 0.3 : 0.5;
+    
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) setIsInView(true);
             },
-            { threshold: 0.5 }
+            { threshold }
         );
+    
         if (sectionRef.current) observer.observe(sectionRef.current);
-
+    
         return () => {
             if (sectionRef.current) observer.unobserve(sectionRef.current);
         };

@@ -1,9 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import emailjs from "emailjs-com";
+import { motion } from 'framer-motion';
 
 export default function ContactSection() {
     const [formData, setFormData] = useState({ name: "", email: "", message: "" });
     const [modal, setModal] = useState({ isVisible: false, message: "", success: true });
+    const [isView, setIsView] = useState(null);
+    const sectionRef = useRef(null);
 
     useEffect(() => {
         const hash = window.location.hash;
@@ -13,6 +16,24 @@ export default function ContactSection() {
                 element.scrollIntoView({ behavior: 'smooth' });
             }
         }
+    }, []);
+
+    useEffect(() => {
+        const mobileView = window.matchMedia("(max-width: 768px)");
+        const threshold = mobileView.matches ? 0.3 : 0.4;
+    
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) setIsView(true);
+            },
+            { threshold }
+        );
+    
+        if (sectionRef.current) observer.observe(sectionRef.current);
+    
+        return () => {
+            if (sectionRef.current) observer.unobserve(sectionRef.current);
+        };
     }, []);
 
     const handleInputChange = (e) => {
@@ -52,7 +73,11 @@ export default function ContactSection() {
     const closeModal = () => setModal({ ...modal, isVisible: false });
 
     return (
-        <section className="bg-gradient-to-br from-cream to-light overflow-hidden py-16 px-6 md:px-20" id="contact">
+        <section 
+            className="bg-gradient-to-br from-cream to-light overflow-hidden py-16 px-6 md:px-20" 
+            id="contact"
+            ref={sectionRef}
+            >
             <div className="text-center mb-12">
                 <h2 className="text-5xl font-extrabold text-gray-800 mb-4">
                     <span className="bg-gradient-to-r from-burnt-orange to-orange-500 text-gray-800 bg-clip-text">
@@ -64,6 +89,12 @@ export default function ContactSection() {
                     Have a project in mind? Let’s connect and create something amazing together!
                 </p>
             </div>
+            <motion.section
+                initial={{ y: 50, opacity: 0 }}
+                animate={isView ? {y: 0, opacity: 1}  : "hidden"}
+                transition={{ duration: 1.5, ease: "easeOut" }}
+                className="bg-gradient-to-br from-cream to-light"
+            >
             <form
                 className="max-w-2xl mx-auto bg-white shadow-2xl p-8 rounded-lg space-y-6 relative overflow-hidden"
                 onSubmit={handleSubmit}
@@ -111,15 +142,25 @@ export default function ContactSection() {
                         onChange={handleInputChange}
                     ></textarea>
                 </div>
-                <button
+                <motion.button
+                    whileTap={{ scale: 0.8, rotate: -2 }}
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.1 }}
                     type="submit"
-                    className="relative w-full py-3 bg-gradient-to-r from-orange-400 to-burnt-orange text-white font-semibold rounded-full shadow-md hover:bg-orange-500 transition-all duration-300"
+                    className="relative w-full py-3 bg-gradient-to-r from-orange-400 to-burnt-orange text-white font-semibold rounded-full shadow-md transition-all"
                 >
                     Send Message
-                </button>
+                </motion.button>
             </form>
+            </motion.section>
             {modal.isVisible && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                <motion.div
+                    initial={{ opacity: 0, scale: 1 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    transition={{ duration: 0.3 }}
+                    className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+                >
                     <div className="bg-white rounded-lg p-6 max-w-md w-full text-center shadow-lg relative">
                         <button
                             onClick={closeModal}
@@ -142,7 +183,7 @@ export default function ContactSection() {
                             Close
                         </button>
                     </div>
-                </div>
+                </motion.div>
             )}
         </section>
     );

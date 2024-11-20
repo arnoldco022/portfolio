@@ -1,9 +1,47 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Slider from "react-slick";
+import { motion } from "framer-motion";
+
+const containerVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: {
+            delayChildren: 0.3,
+            staggerChildren: 0.2,
+        },
+    },
+};
+
+const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+};
 
 const Works = () => {
     const [showModal, setShowModal] = useState(false);
     const [activeProject, setActiveProject] = useState(null);
+    const [isView, setIsView] = useState(null);
+    const sectionRef = useRef(null);
+
+    useEffect(() => {
+        const mobileView = window.matchMedia("(max-width: 768px)");
+        const threshold = mobileView.matches ? 0.3 : 0.4;
+    
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) setIsView(true);
+            },
+            { threshold }
+        );
+    
+        if (sectionRef.current) observer.observe(sectionRef.current);
+    
+        return () => {
+            if (sectionRef.current) observer.unobserve(sectionRef.current);
+        };
+    }, []);
 
     const projects = [
         {
@@ -66,7 +104,10 @@ const Works = () => {
     };
 
     return (
-        <section className="bg-gradient-to-b from-gray-100 to-cream  py-16 px-6 md:px-20" id="works">
+        <section 
+            className="bg-gradient-to-b from-gray-100 to-cream  py-16 px-6 md:px-20" 
+            id="works" 
+            ref={sectionRef}>
             <div className="text-center mb-12">
                 <h2 className="text-5xl font-extrabold text-gray-800 mb-4">My Works</h2>
                 <div className="w-20 h-1 bg-orange-400 mx-auto my-4 rounded-full"></div>
@@ -74,11 +115,17 @@ const Works = () => {
                     Here are some of the projects I've worked on, showcasing my expertise in web development and design.
                 </p>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+            <motion.div
+                variants={containerVariants}
+                initial="hidden"
+                animate={isView ? "visible" : "hidden"}
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12"
+            >
                 {projects.map((project, index) => (
-                    <div
+                    <motion.div
                         key={index}
-                        className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+                        variants={itemVariants}
+                        className="bg-white rounded-lg shadow-md"
                     >
                         <div className="p-6">
                             <h3 className="text-2xl font-bold text-gray-800 mb-2">
@@ -102,11 +149,18 @@ const Works = () => {
                                 View Project
                             </button>
                         </div>
-                    </div>
+                    </motion.div>
                 ))}
-            </div>
+            </motion.div>
             {showModal && activeProject && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                <motion.div
+                    initial={{ opacity: 0, scale: 1 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    transition={{ duration: 0.3 }}
+                    className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+                >
                     <div className="bg-white rounded-lg shadow-lg w-full max-w-3xl relative pb-4">
                         <div className="flex items-center justify-between p-6 border-b border-gray-200">
                             <h3 className="text-3xl font-bold text-gray-800">
@@ -146,6 +200,7 @@ const Works = () => {
                             </Slider>
                         </div>
                     </div>
+                </motion.div>
                 </div>
             )}
         </section>

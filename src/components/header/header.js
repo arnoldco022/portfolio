@@ -19,7 +19,7 @@ const Header = () => {
     return (
         <div className="relative flex items-center justify-between h-screen p-10 md:p-28 bg-gradient-to-br from-cream to-light-brown overflow-hidden" id="home">
             <div
-                className={`w-full md:w-1/2 text-left transform transition-all duration-1000 ease-out ${
+                className={`w-full md:w-1/2 text-left transform transition-all duration-500 ease-out ${
                     isLoaded ? "opacity-100 translate-x-0" : "opacity-0 translate-x-[-50px]"
                 }`}
             >
@@ -51,7 +51,7 @@ const Header = () => {
                 </div>
             </div>
             <div
-                className={`hidden md:block w-1/2 transform transition-all duration-1000 ease-out ${
+                className={`hidden md:block w-1/2 transform transition-all duration-500 ease-out ${
                     isLoaded ? "opacity-100 translate-x-0" : "opacity-0 translate-x-[50px]"
                 }`}
             >

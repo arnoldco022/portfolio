@@ -48,44 +48,70 @@ const Works = () => {
             title: "Portfolio Website",
             description:
                 "A personal portfolio website to showcase my skills, projects, and experiences. Built with React and TailwindCSS.",
-            technologies: ["React", "TailwindCSS", "JavaScript"],
+            technologies: ["React.js", "TailwindCSS", "JavaScript"],
             images: [
-                "https://via.placeholder.com/800x400?text=Project+1+Image+1",
+                "https://i.imgur.com/jVNuh3f.png",
                 "https://via.placeholder.com/800x400?text=Project+1+Image+2",
                 "https://via.placeholder.com/800x400?text=Project+1+Image+2",
             ],
         },
         {
-            title: "E-commerce Platform",
+            title: "E-Konek",
             description:
-                "A scalable e-commerce platform with a fully integrated payment system. Features include user authentication, product search, and a responsive design.",
-            technologies: ["Next.js", "Node.js", "MongoDB"],
+                "A documentation-sharing platform for uploading and sharing PDFs with messages or subjects. Built using React.js with a focus on UI design and API integration",
+            technologies: ["React.js", "MySQL", "TailwindCSS"],
             images: [
-                "https://via.placeholder.com/800x400?text=Project+2+Image+1",
-                "https://via.placeholder.com/800x400?text=Project+2+Image+2",
-                "https://via.placeholder.com/800x400?text=Project+1+Image+2",
+                "https://i.imgur.com/6U0Vmvv.jpeg",
+                "https://i.imgur.com/3VKKj1p.jpeg",
+                "https://i.imgur.com/Bocgaeu.jpeg",
+                "https://i.imgur.com/BCoOeNQ.jpeg",
+                "https://i.imgur.com/Bzm6Uze.jpeg",
             ],
         },
         {
-            title: "E-commerce Platform",
+            title: "GoTryke",
             description:
-                "A scalable e-commerce platform with a fully integrated payment system. Features include user authentication, product search, and a responsive design.",
-            technologies: ["Next.js", "Node.js", "MongoDB"],
+                "Web storefront for a delivery app where users can log in, sign up, and view their transaction history. Responsible for UI design and integrating APIs for authentication and data management.", 
+            technologies: ["React.js", "MySQL"],
             images: [
-                "https://via.placeholder.com/800x400?text=Project+2+Image+1",
-                "https://via.placeholder.com/800x400?text=Project+2+Image+2",
-                "https://via.placeholder.com/800x400?text=Project+1+Image+2",
+                "https://i.imgur.com/OVLBjSU.jpeg",
+                "https://i.imgur.com/qMZmaTF.jpeg",
+                "https://i.imgur.com/5nYfh7i.jpeg",
+                "https://i.imgur.com/otTdpqN.jpeg",
             ],
         },
         {
-            title: "E-commerce Platform",
+            title: "Dashride",
             description:
-                "A scalable e-commerce platform with a fully integrated payment system. Features include user authentication, product search, and a responsive design.",
-            technologies: ["Next.js", "Node.js", "MongoDB"],
+            "Built the front-end authentication system for a delivery app, including signup, login, OTP verification, and forgot password using React Native and API integration.",
+            technologies: ["React Native", "MySQL"],
             images: [
-                "https://via.placeholder.com/800x400?text=Project+2+Image+1",
-                "https://via.placeholder.com/800x400?text=Project+2+Image+2",
-                "https://via.placeholder.com/800x400?text=Project+1+Image+2",
+                "https://i.imgur.com/z6zxMz6.png",
+                "https://i.imgur.com/N1Pf16k.png",
+                "https://i.imgur.com/ZvVMQqq.png",
+            ],
+        },
+        {
+            title: "Admin Platform",
+            description:
+                "An admin platform for managing affiliate and user accounts, with features like account activation/deactivation and viewing account details or past referrals. Worked on UI design, API integration for data fetching, and state management.",
+            technologies: ["React.js", "MySQL", "TailwindCSS"],
+            images: [
+                "https://i.imgur.com/jVNuh3f.png",
+                "https://i.imgur.com/Sfhagvr.png",
+                "https://i.imgur.com/z3c2cdn.png",
+                "https://i.imgur.com/zLu015w.png",
+            ],
+        },
+        {
+            title: "Time Tracker App",
+            description:
+                "An Electron JS-based app for tracking employee time in and time out, along with task status monitoring. Worked on user login/signup, verification, and API integration for fetching user data.",
+            technologies: ["Electron.js"],
+            images: [
+                "https://i.imgur.com/wBkr1SM.png",
+                "https://i.imgur.com/QkKdH3Y.png",
+                "https://i.imgur.com/UO8noRS.png",
             ],
         },
     ];
@@ -193,7 +219,7 @@ const Works = () => {
                                         <img
                                             src={img}
                                             alt={`Slide ${idx + 1}`}
-                                            className="w-full h-80 object-cover rounded-lg px-2"
+                                            className="w-full h-80 object-contain rounded-lg px-2"
                                         />
                                     </div>
                                 ))}

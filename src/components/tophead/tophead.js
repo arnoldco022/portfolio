@@ -28,9 +28,16 @@ export default function TopHeader() {
               window.scrollTo({ top: 0, behavior: "smooth" });
               window.history.replaceState(null, "", window.location.pathname);
             }}
-            className="hover:text-orange-400 transition-colors"
+            className="hover:text-orange-400 transition-colors flex items-center gap-3"
           >
-            ADC-Portfolio
+            <img
+              src={process.env.PUBLIC_URL + '/coffee.png'}
+              alt="Coffee Logo"
+              className="h-12 w-12"
+            />
+            <span className="text-2xl font-semibold text-gray-900 mt-2">
+              Code Coffee
+            </span>
           </a>
         </div>
         <ul className="hidden md:flex space-x-12 text-lg">

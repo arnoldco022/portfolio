@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FaReact, FaHtml5, FaCss3Alt, FaJs, FaNodeJs, FaPhp, FaWordpress, FaBootstrap } from 'react-icons/fa';
-import { SiTailwindcss, SiElectron } from 'react-icons/si';
+import { SiTailwindcss, SiElectron, SiMysql, SiPostman } from 'react-icons/si';
 import { IoLogoReact } from 'react-icons/io5';
 import { motion } from 'framer-motion';
 
@@ -15,6 +15,8 @@ const toolsData = [
     { name: 'Bootstrap', icon: <FaBootstrap />, color: '#7952B3', description: 'Bootstrap is a framework for responsive web design.' },
     { name: 'PHP', icon: <FaPhp />, color: '#777BB4', description: 'PHP is a scripting language for server-side development.' },
     { name: 'WordPress', icon: <FaWordpress />, color: '#21759B', description: 'WordPress is a platform for creating websites and blogs.' },
+    { name: 'Postman', icon: <SiPostman />, color: '#FF6C37', description: 'Postman is a tool for API development and testing.' },
+    { name: 'MySQL', icon: <SiMysql />, color: '#00758F', description: 'MySQL is a relational database management system.' },
 ];
 
 const toolboxVariants = {
@@ -131,12 +133,10 @@ const AboutMe = () => {
                             <motion.div
                                 key={index}
                                 onClick={() => setActiveTool(tool)}
-                                className={`group cursor-pointer bg-white shadow-md p-6 rounded-lg hover:shadow-lg transition duration-300 border ${
-                                    activeTool.name === tool.name ? 'border-burnt-orange' : 'border-transparent'
-                                }`}
+                                className={`group cursor-pointer bg-white shadow-md p-6 rounded-lg hover:shadow-lg transition duration-300`}
                                 variants={toolVariants}
                             >
-                                <div className="text-4xl mx-auto" style={{ color: activeTool.name === tool.name ? '#D06A4B' : '#ccc' }}>
+                                <div className="text-4xl mx-auto" style={{ color: tool.color }}>
                                     {tool.icon}
                                 </div>
                                 <h4 className="text-center mt-4 text-lg font-medium group-hover:text-burnt-orange">

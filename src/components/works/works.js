@@ -114,6 +114,29 @@ const Works = () => {
                 "https://i.imgur.com/UO8noRS.png",
             ],
         },
+        {
+            title: "Hando",
+            description: "Developed a WordPress site by recreating a ThemeForest template using Elementor. Emphasized precision in layout reproduction and maintaining responsive design across devices.",
+            technologies: ["WordPress", "Elementor"],
+            images: [
+                "https://i.imgur.com/VNcejMG.jpeg",
+                "https://i.imgur.com/ULbyjrY.jpeg",
+                "https://i.imgur.com/6hhOibN.jpeg",
+                "https://i.imgur.com/LLGP53Z.jpeg"
+            ]
+        },
+        {
+            title: "FourPaws",
+            description:
+                "Recreated a WordPress website template using Elementor based on a design from ThemeForest. Focused on accurately replicating the layout and styling to match the original template.",    
+            technologies: ["WordPress", "Elementor"],
+            images: [
+                "https://i.imgur.com/br3U3y1.jpeg",
+                "https://i.imgur.com/0axY2f6.jpeg",
+                "https://i.imgur.com/zHmC9WV.jpeg",
+                "https://i.imgur.com/RMiMCga.jpeg",
+            ],
+        },
     ];
 
     const handleViewProject = (project) => {

@@ -93,7 +93,7 @@ export default function ContactSection() {
                 initial={{ y: 50, opacity: 0 }}
                 animate={isView ? {y: 0, opacity: 1}  : "hidden"}
                 transition={{ duration: 1.5, ease: "easeOut" }}
-                className="bg-gradient-to-br from-cream to-light"
+                className=""
             >
             <form
                 className="max-w-2xl mx-auto bg-white shadow-2xl p-8 rounded-lg space-y-6 relative overflow-hidden"

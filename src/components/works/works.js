@@ -50,9 +50,10 @@ const Works = () => {
                 "A personal portfolio website to showcase my skills, projects, and experiences. Built with React and TailwindCSS.",
             technologies: ["React.js", "TailwindCSS", "JavaScript"],
             images: [
-                "https://i.imgur.com/jVNuh3f.png",
-                "https://via.placeholder.com/800x400?text=Project+1+Image+2",
-                "https://via.placeholder.com/800x400?text=Project+1+Image+2",
+                "https://i.imgur.com/ErK3d7o.jpeg",
+                "https://i.imgur.com/vuaOd88.jpeg",
+                "https://i.imgur.com/7vpTURZ.jpeg",
+                "https://i.imgur.com/KawQKKz.jpeg",
             ],
         },
         {
